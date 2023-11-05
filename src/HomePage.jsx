@@ -1,26 +1,29 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "./redux/Slice";
+import { BANANA,STRAWBERRIES,BLACKBERRIES,YOGURT } from "./assets";
+import { CARROT,FISH,CHOCOLATE,EGGS,MEAT,PREPARED,CAKE } from './assets';
+import { ADD_ICON,REMOVE_ICON } from './assets';
 
 const listOfItems = [
-	{name:"Produce",altName:"Produce",pic:`./assets/items images/menu items/fa-solid_carrot.png`,},
-	{name:"Prepared foods",altName:"Sweets",pic:`./assets/items images/menu items/mdi_chocolate.png`,},
-	{name:"Canned foods & Soups",altName:"Canned",pic:`./assets/items images/menu items/game-icons_canned-fish.png`,},
-	{name:"Produce",altName:"Produce",pic:`./assets/items images/menu items/fa-solid_carrot.png`,},
-	{name:"Bakery",altName:"Bakery",pic:`./assets/items images/menu items/material-symbols_cake-rounded.png`,},
-	{name:"Diary & Eggs",altName:"Dairy",pic:`./assets/items images/menu items/jam_eggs-f.png`,},
-	{name:"Frozen",altName:"Frozen",pic:`./assets/items images/menu items/ion_fast-food.png`,},
-	{name:"Meat & Seafood",altName:"Meat",pic:`./assets/items images/menu items/meat.png`,},
-	{name:"Diary & Eggs",altName:"Dairy",pic:`./assets/items images/menu items/jam_eggs-f.png`,},
-	{name:"Produce",altName:"Produce",pic:`./assets/items images/menu items/fa-solid_carrot.png`,},
-	{name:"Prepared foods",altName:"Sweets",pic:`./assets/items images/menu items/mdi_chocolate.png`,},
-	{name:"Canned foods & Soups",altName:"Canned",pic:`./assets/items images/menu items/game-icons_canned-fish.png`,},
-	{name:"Produce",altName:"Produce",pic:`./assets/items images/menu items/fa-solid_carrot.png`,},
-	{name:"Bakery",altName:"Bakery",pic:`./assets/items images/menu items/material-symbols_cake-rounded.png`,},
-	{name:"Diary & Eggs",altName:"Dairy",pic:`./assets/items images/menu items/jam_eggs-f.png`,},
-	{name:"Frozen",altName:"Frozen",pic:`./assets/items images/menu items/ion_fast-food.png`,},
-	{name:"Meat & Seafood",altName:"Meat",pic:`./assets/items images/menu items/meat.png`,},
-	{name:"Diary & Eggs",altName:"Dairy",pic:`./assets/items images/menu items/jam_eggs-f.png`,},
+	{name:"Produce",altName:"Produce",pic:CARROT,},
+	{name:"Prepared foods",altName:"Sweets",pic:CHOCOLATE,},
+	{name:"Canned foods & Soups",altName:"Canned",pic:FISH,},
+	{name:"Produce",altName:"Produce",pic:CARROT,},
+	{name:"Bakery",altName:"Bakery",pic:CAKE,},
+	{name:"Diary & Eggs",altName:"Dairy",pic:EGGS,},
+	{name:"Frozen",altName:"Frozen",pic:PREPARED,},
+	{name:"Meat & Seafood",altName:"Meat",pic:MEAT,},
+	{name:"Diary & Eggs",altName:"Dairy",pic:EGGS,},
+	{name:"Produce",altName:"Produce",pic:CARROT,},
+	{name:"Prepared foods",altName:"Sweets",pic:CHOCOLATE,},
+	{name:"Canned foods & Soups",altName:"Canned",pic:FISH,},
+	{name:"Produce",altName:"Produce",pic:CARROT,},
+	{name:"Bakery",altName:"Bakery",pic:CAKE,},
+	{name:"Diary & Eggs",altName:"Dairy",pic:EGGS,},
+	{name:"Frozen",altName:"Frozen",pic:PREPARED,},
+	{name:"Meat & Seafood",altName:"Meat",pic:MEAT,},
+	{name:"Diary & Eggs",altName:"Dairy",pic:EGGS,},
 ];
 
 const menuList = [
@@ -36,7 +39,7 @@ const menuList = [
 const productDetails = [
 	{
 		id:1,
-		image: `./assets/items images/banana.jpg`,
+		image: BANANA,
 		price: `$${0.69}`,
 		name: "Banana 1ct",
 		vitamins: "18 oz",
@@ -44,7 +47,7 @@ const productDetails = [
 	},
 	{
 		id:2,
-		image: `./assets/items images/strawberries.png`,
+		image: STRAWBERRIES,
 		price: `$${0.69}`,
 		originalPrice: `$${0.69}`,
 		name: "Strawberries",
@@ -53,7 +56,7 @@ const productDetails = [
 	},
 	{
 		id:3,
-		image: `./assets/items images/yogurt.png`,
+		image: YOGURT,
 		width: "90px",
 		price: `$${0.69}`,
 		name: "Yogurt",
@@ -62,7 +65,7 @@ const productDetails = [
 	},
 	{
 		id:4,
-		image: `./assets/items images/blackberries.png`,
+		image: BLACKBERRIES,
 		price: `$${0.69}`,
 		name: "Blackberries",
 		vitamins: "1 lb",
@@ -70,7 +73,7 @@ const productDetails = [
 	},
 	{
 		id:2,
-		image: `./assets/items images/strawberries.png`,
+		image: STRAWBERRIES,
 		price: `$${0.69}`,
 		originalPrice: `$${0.69}`,
 		name: "Strawberries",
@@ -79,7 +82,7 @@ const productDetails = [
 	},
 	{
 		id:3,
-		image: `./assets/items images/yogurt.png`,
+		image: YOGURT,
 		width: "90px",
 		price: `$${0.69}`,
 		name: "Yogurt",
@@ -88,7 +91,7 @@ const productDetails = [
 	},
 	{
 		id:1,
-		image: `./assets/items images/banana.jpg`,
+		image: BANANA,
 		price: `$${0.69}`,
 		name: "Banana 1ct",
 		vitamins: "18 oz",
@@ -96,7 +99,7 @@ const productDetails = [
 	},
 	{
 		id:2,
-		image: `./assets/items images/strawberries.png`,
+		image: STRAWBERRIES,
 		price: `$${0.69}`,
 		originalPrice: `$${0.69}`,
 		name: "Strawberries",
@@ -105,7 +108,7 @@ const productDetails = [
 	},
 	{
 		id:3,
-		image: `./assets/items images/yogurt.png`,
+		image: YOGURT,
 		width: "90px",
 		price: `$${0.69}`,
 		name: "Yogurt",
@@ -114,7 +117,7 @@ const productDetails = [
 	},
 	{
 		id:4,
-		image: `./assets/items images/blackberries.png`,
+		image: BLACKBERRIES,
 		price: `$${0.69}`,
 		name: "Blackberries",
 		vitamins: "1 lb",
@@ -122,7 +125,7 @@ const productDetails = [
 	},
 	{
 		id:2,
-		image: `./assets/items images/strawberries.png`,
+		image: STRAWBERRIES,
 		price: `$${0.69}`,
 		originalPrice: `$${0.69}`,
 		name: "Strawberries",
@@ -131,7 +134,7 @@ const productDetails = [
 	},
 	{
 		id:3,
-		image: `./assets/items images/yogurt.png`,
+		image: YOGURT,
 		width: "90px",
 		price: `$${0.69}`,
 		name: "Yogurt",
@@ -140,6 +143,8 @@ const productDetails = [
 	},
 ];
 const HomePage = () => {
+	const storeItems = useSelector((state) => state.itemsInCart.cartItems);
+
 	const [productId, setProductId] = useState([]);
 	const dispatch = useDispatch();
   
@@ -189,15 +194,15 @@ const HomePage = () => {
 						style={{ width: `${product.width}` }}
 					  />
 					  <button onClick={() => toggleProduct(product)}>
-						{productId.includes(product.id) ? (
+						{productId.includes(product.id)  && (storeItems.includes(product))?(
 						  <img
-							src='./assets/items images/Remove icon item.svg'
+							src={REMOVE_ICON}
 							alt=''
 							className='addCart'
 						  />
 						) : (
 						  <img
-							src='./assets/items images/Add icon item.svg'
+							src={ADD_ICON}
 							alt=''
 							className='addCart'
 						  />

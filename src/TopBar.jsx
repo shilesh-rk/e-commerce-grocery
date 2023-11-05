@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {  removeFromCart } from "./redux/Slice";
 
 const TopBar = () => {
 	const items = useSelector((state) => state.itemsInCart.cartItems);
 	const [display, setDisplay] = useState(false);
+	const dispatch = useDispatch()
 	console.log(items);
 
 	useEffect(() => {
@@ -32,7 +34,7 @@ const TopBar = () => {
 					<div className='flex items-center justify-between px-4 py-3 bg-gray-200'>
 						<h1 class='text-lg font-bold mr-5'>Food Cart</h1>
 						<span class='text-gray-600'>
-							({items.length ? `${items.length} item's` : "You'r cart is empty"}{" "}
+							({items.length ? `${items.length} item's` : "You'r cart is empty"}
 							)
 						</span>
 					</div>
@@ -51,7 +53,7 @@ const TopBar = () => {
 												<h2 class='text-lg font-bold'>{addedItems.name}</h2>
 												<span class='text-gray-600'>{addedItems.price}</span>
 											</div>
-											<button class='text-gray-600 hover:text-red-500'>
+											<button class='text-gray-600 hover:text-red-500' onClick={()=>dispatch(removeFromCart(addedItems))}>
 												<svg class='h-6 w-6 fill-current' viewBox='0 0 24 24'>
 													<path d='M19 13H5v-2h14v2z' />
 												</svg>
@@ -63,8 +65,8 @@ const TopBar = () => {
 						</div>
                         <div className="px-4 py-3 bg-gray-200">
                             <div className="flex justify-between items-center">
-                            <span class="font-bold text-lg">Total:</span>
-                <span class="font-bold text-lg">$74.97</span>
+                            {/* <span class="font-bold text-lg">Total:</span>
+                <span class="font-bold text-lg">${0}</span> */}
                             </div>
 
                 <button className="block w-full mt-4 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onClick={() => setDisplay(false)}>Proceed</button>
