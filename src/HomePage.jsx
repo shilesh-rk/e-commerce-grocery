@@ -36,7 +36,7 @@ const menuList = [
 const productDetails = [
 	{
 		id:1,
-		image: `src/assets/items images/banana.jpg`,
+		image: `src/assets/items images/banana.png`,
 		price: `$${0.69}`,
 		name: "Banana 1ct",
 		vitamins: "18 oz",
@@ -88,7 +88,7 @@ const productDetails = [
 	},
 	{
 		id:1,
-		image: `src/assets/items images/banana.jpg`,
+		image: `src/assets/items images/banana.png`,
 		price: `$${0.69}`,
 		name: "Banana 1ct",
 		vitamins: "18 oz",
