@@ -176,6 +176,7 @@ const HomePage = () => {
 		</div>
 		<div className='overflow-x-hidden menuBar'>
 		  {menuList.map((category, i) => (
+			<>
 			<div className='sections' key={i} id={category.name}>
 			  <h1 className='category-title max-md:hidden'>
 				{category.name} <i className='fa-solid fa-chevron-right'></i>
@@ -186,32 +187,32 @@ const HomePage = () => {
 			  <div className='flex'>
 				<div className='category-section overflow-x-auto'>
 				  {productDetails.map((product, i) => (
-					<div key={i} className='item-container'>
+					  <div key={i} className='item-container'>
 					  <img
 						src={product.image}
 						alt={product.name}
 						className='productImg'
 						style={{ width: `${product.width}` }}
-					  />
+						/>
 					  <button onClick={() => toggleProduct(product)}>
 						{productId.includes(product.id)  && (storeItems.includes(product))?(
-						  <img
+							<img
 							src={REMOVE_ICON}
 							alt=''
 							className='addCart'
-						  />
-						) : (
-						  <img
+							/>
+							) : (
+								<img
 							src={ADD_ICON}
 							alt=''
 							className='addCart'
 						  />
-						)}
+						  )}
 					  </button>
 					  <h1 className='productPrice'>
 						{product.originalPrice ? (
-						  <span className='originalPrice'>{product.originalPrice}</span>
-						) : null}
+							<span className='originalPrice'>{product.originalPrice}</span>
+							) : null}
 						{product.price}
 					  </h1>
 					  <h1 className='productName'>{product.name}</h1>
@@ -220,8 +221,9 @@ const HomePage = () => {
 				  ))}
 				</div>
 			  </div>
-				<hr className="max-md:hidden"/>
 			</div>
+				<hr className="max-md:hidden"/>
+				  </>
 			
 		  ))}
 		</div>
